@@ -69,7 +69,7 @@ const Chatbox = ({ session }: { session: Session }) => {
             message
         )
 
-        await fetch('/api/chat', {
+        await fetch('/api/x-chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -86,7 +86,7 @@ const Chatbox = ({ session }: { session: Session }) => {
 
     return (
         <>
-            {/* <ChatMessages chatId={chatId} session={session} /> */}
+            <ChatMessages chatId={chatId} session={session} />
 
             <div className='space-y-4 border-t p-4'>
                 {image && (

@@ -1,5 +1,7 @@
+import { adminDB } from '@/lib/firebaseAdmin'
 import { xai } from '@/lib/xai'
-import { serverTimestamp } from '@firebase/firestore'
+import { firestore } from 'firebase-admin'
+import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
     const { input, chatId, user } = await req.json()
@@ -9,11 +11,11 @@ export async function POST(req: Request) {
         messages: [
             {
                 role: 'system',
-                content: 'You are a helpful assistant.',
+                content: 'Ви корисний помічник.'
             },
             {
                 role: 'user',
-                content: 'input',
+                content: input,
             },
         ],
     })
@@ -22,11 +24,21 @@ export async function POST(req: Request) {
 
     const message: Message = {
         text: response || 'Luna was unable to find an answer for that!',
-        createdAt: serverTimestamp(),
+        createdAt: firestore.Timestamp.now(),
         user: {
             _id: 'askluna',
             name: 'AskLuna',
-            avatar: '/sweetie-luna.jpg'
+            avatar: '/sweetie-luna.jpg',
         },
     }
+
+    await adminDB
+        .collection('users')
+        .doc(user.email)
+        .collection('chats')
+        .doc(chatId)
+        .collection('messages')
+        .add(message)
+
+    return NextResponse.json({ answer: message.text, status: 200 })
 }

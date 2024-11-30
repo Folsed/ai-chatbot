@@ -5,7 +5,7 @@ import { DocumentData } from '@firebase/firestore'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const Message = ({ message }: { message: DocumentData }) => {
-    const isAIMessage = message.user._id === 'ask-gpt'
+    const isAIMessage = message.user._id === 'askluna'
 
     return (
         <div

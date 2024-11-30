@@ -56,6 +56,7 @@ const SheetContent = React.forwardRef<
     SheetContentProps
 >(({ side = 'right', className, children, ...props }, ref) => (
     <SheetPortal>
+        <SheetTitle className='sr-only'>Ask Luna</SheetTitle>
         <SheetOverlay />
         <SheetPrimitive.Content
             ref={ref}

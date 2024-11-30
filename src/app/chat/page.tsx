@@ -60,7 +60,7 @@ export default function ChatPage() {
                                     alt='xAI Logo'
                                     fill
                                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                                    className='pointer-events-none aspect-square select-none rounded-lg object-contain invert dark:invert'
+                                    className='pointer-events-none aspect-square select-none rounded-lg object-contain dark:invert'
                                 />
                                 <div className='absolute bottom-0 left-0 right-0 rounded-b-lg bg-black/90 p-2 font-bold uppercase text-white'>
                                     Powered By

@@ -37,12 +37,15 @@ const ChatMessages = ({
     useEffect(() => {
         scrollRef.current.scrollIntoView(false)
     }, [messages])
+    console.log(scrollRef)
 
     return (
-        <ScrollArea className='flex-1 p-4' ref={scrollRef}>
-            {messages?.docs.map((message) => (
-                <Message key={message.id} message={message.data()} />
-            ))}
+        <ScrollArea className='flex-1'>
+            <div className='flex h-full flex-1 flex-col p-4' ref={scrollRef}>
+                {messages?.docs.map((message) => (
+                    <Message key={message.id} message={message.data()} />
+                ))}
+            </div>
         </ScrollArea>
     )
 }

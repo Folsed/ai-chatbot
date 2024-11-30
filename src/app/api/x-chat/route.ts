@@ -1,29 +1,37 @@
-import { adminDB } from '@/lib/firebaseAdmin'
-import { xai } from '@/lib/xai'
+import { xai } from '@ai-sdk/xai'
 import { firestore } from 'firebase-admin'
 import { NextResponse } from 'next/server'
+import { generateText, UserContent } from 'ai'
 
-export async function POST(req: Request) {
-    const { input, chatId, user } = await req.json()
+import { adminDB } from '@/lib/firebaseAdmin'
 
-    const res = await xai.chat.completions.create({
-        model: 'grok-beta',
+export async function POST(request: Request) {
+    const { input, imageUrl, chatId, user } = await request.json()
+
+    const userMessage: UserContent = imageUrl
+        ? [
+              { type: 'text', text: input },
+              { type: 'image', image: new URL(imageUrl) },
+          ]
+        : [{ type: 'text', text: input }]
+
+    const { text } = await generateText({
+        model: xai('grok-vision-beta'),
         messages: [
             {
-                role: 'system',
-                content: 'Тебе звуть Луна і ти корисний помічник для всіх людей на планеті. Ти завжди ведеш себе поважно але і не даси себе образити, даш влучну відповідь, якщо на то буде причина! Ти розмовляєш на той мові, на якій до тебе звернулися.'
+                role: 'assistant',
+                content:
+                    'Ти дівчина. Тебе звуть Луна і ти корисний помічник для всіх людей на планеті. Ти завжди ведеш себе поважно але і не даси себе образити, даш влучну відповідь, якщо на то буде причина! Ти розмовляєш на той мові, на якій до тебе звернулися.',
             },
             {
                 role: 'user',
-                content: input,
+                content: userMessage,
             },
         ],
     })
 
-    const response = res.choices[0].message.content
-
     const message: Message = {
-        text: response || 'Luna was unable to find an answer for that!',
+        text: text || 'Luna was unable to find an answer for that!',
         createdAt: firestore.Timestamp.now(),
         user: {
             _id: 'askluna',
@@ -40,5 +48,5 @@ export async function POST(req: Request) {
         .collection('messages')
         .add(message)
 
-    return NextResponse.json({ answer: message.text, status: 200 })
+    return NextResponse.json({ answer: message.text }, { status: 200 })
 }

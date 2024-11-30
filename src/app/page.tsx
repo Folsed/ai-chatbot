@@ -12,7 +12,6 @@ import { redirect } from 'next/navigation'
 
 export default async function Home() {
     const session = await auth()
-    console.log(session)
 
     const handleSignIn = async () => {
         'use server'

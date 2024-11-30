@@ -88,7 +88,7 @@ const Chatbox = ({ session }: { session: Session }) => {
         <>
             <ChatMessages chatId={chatId} session={session} />
 
-            <div className='space-y-4 border-t p-4'>
+            <div className='border-t p-4 fixed w-full bottom-0 z-10 bg-zinc-950'>
                 {image && (
                     <div className='relative flex w-full justify-end'>
                         <div className='absolute right-2 top-2 cursor-pointer rounded-full bg-white p-1'>

@@ -5,7 +5,7 @@ import ThemeToggle from '@/components/theme-toggle'
 
 const Header = () => {
     return (
-        <header className='flex items-center justify-between border-b bg-background p-4'>
+        <header className='fixed w-full z-10 flex items-center justify-between border-b bg-background p-4'>
             <SidebarTrigger className='mr-4' />
             <Link href='/chat'>
                 <h1 className='text-xl font-bold'>Ask-Luna</h1>

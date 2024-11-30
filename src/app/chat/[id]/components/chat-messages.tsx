@@ -4,8 +4,8 @@ import { collection, orderBy, query } from '@firebase/firestore'
 
 import { db } from '@/lib/firebase'
 import Message from './message'
-import { ScrollArea } from '@radix-ui/react-scroll-area'
 import { useEffect, useRef } from 'react'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 const ChatMessages = ({
     chatId,
@@ -39,7 +39,7 @@ const ChatMessages = ({
     }, [messages])
 
     return (
-        <ScrollArea className='flex-1 p-4 py-24' ref={scrollRef}>
+        <ScrollArea className='flex-1 p-4' ref={scrollRef}>
             {messages?.docs.map((message) => (
                 <Message key={message.id} message={message.data()} />
             ))}

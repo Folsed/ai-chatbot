@@ -9,10 +9,10 @@ export default function RootLayout({
 }>) {
     return (
         <SidebarProvider>
-            <div className='flex h-screen w-full bg-background text-foreground'>
+            <div className='flex flex-1 h-screen w-full bg-background text-foreground'>
                 <>
                     <AppSidebar />
-                    <div className='flex flex-1 flex-col'>
+                    <div className='flex flex-1 flex-col relative'>
                         <Header />
                         {children}
                     </div>

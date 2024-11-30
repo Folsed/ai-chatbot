@@ -34,10 +34,7 @@ export default async function Home() {
                             </DialogDescription>
                         </DialogHeader>
                         <form
-                            action={async () => {
-                                'use server'
-                                await signIn('github')
-                            }}
+                            action={handleSignIn}
                             className='flex items-center justify-center py-4'
                         >
                             <Button

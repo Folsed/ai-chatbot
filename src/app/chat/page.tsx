@@ -56,11 +56,11 @@ export default function ChatPage() {
                         <div className='w-full max-w-sm space-y-2'>
                             <div className='relative mt-12 h-48 w-full rounded-lg border'>
                                 <Image
-                                    src='/luna-logo.png'
+                                    src='/xaiLogo.png'
                                     alt='xAI Logo'
                                     fill
                                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                                    className='pointer-events-none aspect-square select-none rounded-lg object-contain invert dark:invert-0'
+                                    className='pointer-events-none aspect-square select-none rounded-lg object-contain invert dark:invert'
                                 />
                                 <div className='absolute bottom-0 left-0 right-0 rounded-b-lg bg-black/90 p-2 font-bold uppercase text-white'>
                                     Powered By

@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         user: {
             _id: 'askluna',
             name: 'AskLuna',
-            avatar: ''
+            avatar: '/sweetie-luna.jpg'
         },
     }
 }

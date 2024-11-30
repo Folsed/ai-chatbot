@@ -4,7 +4,7 @@ import {
     DialogContent,
     DialogDescription,
     DialogHeader,
-    DialogTitle
+    DialogTitle,
 } from '@/components/ui/dialog'
 import { auth, signIn } from '@/lib/auth'
 import { GitBranchIcon } from 'lucide-react'

@@ -4,17 +4,17 @@ import { Roboto } from 'next/font/google'
 import Providers from '@/providers/Providers'
 
 export const metadata: Metadata = {
-    title: 'LunaAI',
-    description: ''
+    title: 'Ask-Luna',
+    description: '',
 }
 
 const roboto = Roboto({
     weight: '400',
-    subsets: ['vietnamese']
+    subsets: ['vietnamese'],
 })
 
 export default function RootLayout({
-    children
+    children,
 }: Readonly<{
     children: React.ReactNode
 }>) {

@@ -8,12 +8,17 @@ import {
     SidebarGroupContent,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuItem
+    SidebarMenuItem,
 } from '@/components/ui/sidebar'
 // import { NewChat } from '@/components/new-chat'
 // import { ChatRows } from '@/components/chat-rows'
 // import { ProfileButton } from '@/components/profile-button'
 import { auth } from '@/lib/auth'
+import { NewChat } from './new-chat'
+import { ChatRows } from './chat-rows'
+import { ProfileButton } from './profile-button'
+import { DialogTitle } from '@/components/ui/dialog'
+import { SheetTitle } from '@/components/ui/sheet'
 
 const AppSidebar = async () => {
     const session = await auth()
@@ -30,10 +35,11 @@ const AppSidebar = async () => {
 
     return (
         <Sidebar>
+            
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        {/* <NewChat user={user} /> */}
+                        <NewChat user={user} />
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
@@ -51,7 +57,7 @@ const AppSidebar = async () => {
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        {/* <ProfileButton user={user} /> */}
+                        <ProfileButton user={user} />
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarFooter>

@@ -5,10 +5,10 @@ import ThemeToggle from '@/components/theme-toggle'
 
 const Header = () => {
     return (
-        <header className='bg-background border-b p-4 flex items-center justify-between'>
-            <SidebarTrigger className='block mr-4' />
+        <header className='flex items-center justify-between border-b bg-background p-4'>
+            <SidebarTrigger className='mr-4' />
             <Link href='/chat'>
-                <h1 className='text-xl font-bold'>LunaAI</h1>
+                <h1 className='text-xl font-bold'>Ask-Luna</h1>
             </Link>
             <ThemeToggle />
         </header>

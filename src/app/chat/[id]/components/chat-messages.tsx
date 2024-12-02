@@ -32,12 +32,10 @@ const ChatMessages = ({
             )
     )
 
-    console.log(scrollRef)
 
     useEffect(() => {
         scrollRef.current.scrollIntoView(false)
     }, [messages])
-    console.log(scrollRef)
 
     return (
         <ScrollArea className='flex-1'>
